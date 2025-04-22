@@ -1,6 +1,7 @@
 body {
     width: 600px;
     background-color: #AFC3B5;
+    color: #26693C;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -8,10 +9,12 @@ svg {
     fill: #26693C;
 }
 
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
     background-color: #90AE99;
 }
 
@@ -23,10 +26,26 @@ svg {
 
 .navbar h1 {
     font-size: medium;
-    color: #26693C;
     font-weight: lighter;
 }
 
 .navbar div input {
     margin: 0.5rem;
+}
+
+.chosen-filters {
+    position: sticky;
+    top: 10;
+    background-color: #90AE99;
+    padding: 0.5rem;
+}
+
+.main-content {
+    width: 400px;
+}
+
+h2 {
+    background-color: #AFC3B5;
+    padding: 0.5rem;
+    border-radius: 8px;
 }

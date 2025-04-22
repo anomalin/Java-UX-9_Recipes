@@ -7,7 +7,14 @@ body {
 .navbar {
     display: flex; 
     justify-content: space-between;
+    align-items: center;
     background-color: #90AE99;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
 }
 
 .navbar h1 {
@@ -16,6 +23,6 @@ body {
     font-weight: lighter;
 }
 
-.navbar input {
+.navbar div input {
     margin: 0.5rem;
 }

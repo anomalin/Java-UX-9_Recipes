@@ -1,0 +1,21 @@
+body {
+    width: 600px;
+    background-color: #AFC3B5;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar {
+    display: flex; 
+    justify-content: space-between;
+    background-color: #90AE99;
+}
+
+.navbar h1 {
+    font-size: medium;
+    color: #26693C;
+    font-weight: lighter;
+}
+
+.navbar input {
+    margin: 0.5rem;
+}

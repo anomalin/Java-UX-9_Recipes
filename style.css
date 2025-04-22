@@ -1,11 +1,15 @@
 body {
     width: 600px;
     background-color: #AFC3B5;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+svg {
+    fill: #26693C;
 }
 
 .navbar {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
     background-color: #90AE99;
 }

@@ -1,6 +1,6 @@
 body {
     width: 600px;
-    background-color: #AFC3B5;
+    background-color: rgb(208, 215, 209);
     color: #26693C;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -48,4 +48,9 @@ h2 {
     background-color: #AFC3B5;
     padding: 0.5rem;
     border-radius: 8px;
+}
+
+footer {
+    background-color: #90AE99;
+    padding: 1rem;
 }

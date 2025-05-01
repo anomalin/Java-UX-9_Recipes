@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
+    <script src="https://unpkg.com/vue@3.5.13"
+        integrity="sha384-G++pO/TtP6SeNEBuO/CYuppmlcEhA0Rj9IcY5feVJXhyYraEA8CKVZV38iDXLTyJ"
+        crossorigin="anonymous"></script>
+    <script type="module" src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -26,8 +29,35 @@
                     class="green-icon">
 
                 <img src="img/lets-icons--user-fill.svg" alt="user icon" width="32" height="32" class="green-icon">
+    <div id="app">
+        <top-menu @search="handleSearch"></top-menu>
+        <filter-bar :filters="selectedFilters" @remove-filter="handleRemoveFilter"></filter-bar>
+        <search-filter v-if="searchResults.length > 0"></search-filter>
+
+        <div class="main-content">
+            <div v-if="searchResults.length === 0">
+                <food-card title="Huvudingrediens" :category-tree="mainIngredientTree"
+                    @add-filter="handleAddFilter"></food-card>
+                <food-card title="Grönsaker" :category-tree="vegetableTree"
+                    @add-filter="handleAddFilter"></food-card>
+                <food-card title="Typ av måltid" :category-tree="mealTypeTree"
+                    @add-filter="handleAddFilter"></food-card>
+                <food-card title="Specialkost" :category-tree="specialTree"
+                    @add-filter="handleAddFilter"></food-card>
             </div>
+            <search-results :results="searchResults"></search-results>
         </div>
+
+
+    </div>
+
+
+
+
+
+    <footer>
+        <p>Info</p>
+    </footer>
 
         <!-- Filters -->
         <div class="chosen-filters">

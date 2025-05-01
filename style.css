@@ -23,8 +23,7 @@ h2 {
 .green-icon {
     fill: #26693C;
 }
-
-.navbar {
+.topmenu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,22 +31,22 @@ h2 {
     background-color: #90AE99;
 }
 
-.navbar div {
+.topmenu div {
     display: flex;
     align-items: center;
     margin-right: 0.5rem;
 }
 
-.navbar h1 {
+.topmenu h1 {
     font-size: medium;
     font-weight: lighter;
 }
 
-.navbar div input {
+.topmenu div input {
     margin: 0.5rem;
 }
 
-.chosen-filters {
+.filterbar {
     position: sticky;
     top: 10;
     background-color: #90AE99;
@@ -72,7 +71,15 @@ h2 {
 .food-card {
     display: flex;
     flex-direction: column;
+    justify-self: center;
+    gap: 20px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
+    margin-top: 1rem;
+    width: 400px;
     position: relative;
 }
 
@@ -84,9 +91,8 @@ h2 {
     margin-bottom: 12px;
 }
 
-.category-list {
+.card-buttons {
     display: flex;
-    gap: 20px;
     flex-direction: row;
 }
 
@@ -106,6 +112,37 @@ h2 {
     vertical-align: middle;
     margin-right: 0.25rem;
 }
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.category-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.subcategory-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .subcategory-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
 
 .sub-category {
     display: flex;

@@ -12,52 +12,58 @@
 
 <body>
     <div class="container">
+        
+        <!-- Nav bar-->
         <div class="navbar">
-            <div><img src="img/arcticons--rakuten-recipe.svg" alt="">
+            <div><img src="img/arcticons--rakuten-recipe.svg" alt="add">
                 <h1>Receptsök</h1>
             </div>
+
             <div>
                 <input type="text" placeholder="Sök recept">
 
-                <svg xmlns="img/fluent--settings-32-light.svg" width="32" height="32">
+                <img src="img/fluent--settings-32-light.svg" alt="settings icon" width="32" height="32"
+                    class="green-icon">
 
-                    <img src="img/lets-icons--user-fill.svg" alt="">
-
-
-                    <path d="..." />
-                </svg>
-
-
+                <img src="img/lets-icons--user-fill.svg" alt="user icon" width="32" height="32" class="green-icon">
             </div>
         </div>
+
+        <!-- Filters -->
         <div class="chosen-filters">
             <p>Angivna filter</p>
             <div>
                 <input type="button" value="Kyckling">
             </div>
         </div>
+
+        <!-- Main content-->
         <div class="main-content">
+
+            <!-- Customer -->
             <div class="customer">
                 <h2>Kund</h2>
                 <div class="customer-filters">
                     <div>
 
+                        <!-- Food cards -->
+
                         <div class="food-card-outer">
                             <div class="food-card">
                                 <div class="card-name">Huvudingrediens</div>
                                 <div class="category-list">
-                                    <div class="main-category" onclick="toggleSub('bird-meat')">Fågel</div>
-                                    <div class="main-category" onclick="toggleSub('fish-meat')">Fisk</div>
-                                    <div class="main-category" onclick="toggleSub('mammal-meat')"> Kött</div>
+                                    <div class="main-category" atclick="toggleSub('bird-meat')">Fågel <img
+                                            src="img/ic--twotone-plus.svg" alt="add"></div>
+                                    <div class="main-category" atclick="toggleSub('fish-meat')">Fisk <img
+                                            src="img/ic--twotone-plus.svg" alt="add"></div>
+                                    <div class="main-category" atclick="toggleSub('mammal-meat')"> Kött <img
+                                            src="img/ic--twotone-plus.svg" alt="add"></div>
                                 </div>
-
-
                                 <div class="sub-category" id="bird-meat">
                                     <div class="sub-item">Kyckling</div>
                                     <div class="sub-item">Vaktel</div>
                                     <div class="sub-item">Kalkon</div>
                                 </div>
-
                                 <div class="sub-category" id="fish-meat">
                                     <div class="sub-item">Lax</div>
                                     <div class="sub-item">Torsk</div>
@@ -65,7 +71,6 @@
                                     <div class="sub-item">Sej</div>
                                     <div class="sub-item">Hälleflundra</div>
                                 </div>
-
                                 <div class="sub-category" id="mammal-meat">
                                     <div class="sub-item">Fläsk</div>
                                     <div class="sub-item">Biff</div>
@@ -77,14 +82,39 @@
                             <div class="show-more-button">Visa fler</div>
                         </div>
 
-                    </div>
-                    
 
+                        <div class="food-card-outer">
+                            <div class="food-card">
+                                <div class="card-name">Pris per person</div>
+
+                                <div class="slider-labels">
+                                    <span>0 kr</span>
+                                    <span>1000 kr</span>
+                                </div>
+
+                                <span class="slider-value">500 kr</span>
+                                <input type="range" min="0" max="1000">
+                            </div>
+                        </div>
+
+
+                        <!--Next card above here -->
+
+                    </div>
                 </div>
             </div>
+
+            <!-- Chef -->
             <div class="chef">
                 <h2>Kock</h2>
                 <div class="chef-filters">
+
+                    <!-- More cards -->
+                    <div class="food-card-outer">
+                        <div class="food-card">
+                            <div class="card-name">Planering</div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -92,6 +122,7 @@
         <footer>
             <p>Info</p>
         </footer>
+
     </div>
 </body>
 

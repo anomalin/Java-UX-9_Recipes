@@ -1,3 +1,10 @@
+/* Main content */
+@media (max-width: 600px) {
+    .main-content {
+        width: 100%;
+    }
+}
+
 body {
     width: 600px;
     background-color: rgb(208, 215, 209);
@@ -7,10 +14,15 @@ body {
     font-size: 12px;
 }
 
-svg {
-    fill: #26693C;
+h2 {
+    background-color: #AFC3B5;
+    padding: 0.5rem;
+    border-radius: 8px;
 }
 
+.green-icon {
+    fill: #26693C;
+}
 
 .navbar {
     display: flex;
@@ -42,27 +54,26 @@ svg {
     padding: 0.5rem;
 }
 
-/* card designs */
+
+/* Card designs */
 .food-card-outer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 20px;
     background-color: #FFFFFF;
-
-
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
 .food-card {
-    /* display: grid;
-    grid-template-columns: auto; */
     display: flex;
     flex-direction: column;
     flex: 1;
+    position: relative;
 }
 
 .card-name {
@@ -70,7 +81,7 @@ svg {
     font-size: 12px;
     display: flex;
     flex-direction: row;
-    /* gap: 20px; */
+    margin-bottom: 12px;
 }
 
 .category-list {
@@ -83,43 +94,60 @@ svg {
     align-items: center;
     justify-content: center;
     white-space: nowrap;
-
     padding: 4px;
     border: 0.5px solid #26693C;
     border-radius: 5px;
     font-weight: bold;
-
     cursor: pointer;
 }
 
+.main-category img {
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+}
+
 .sub-category {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.5rem;
 }
 
 .sub-item {
+    display: inline-flex;
+    padding: 4px 8px;
     border: 0.5px solid #26693C;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 .show-more-button {
     flex: 0 0 30%;
     display: flex;
-    align-items: flex-end;
+    align-self: flex-end;
     justify-content: flex-end;
     padding: 1rem;
 }
 
-/* Main content */
-.main-content {
-    width: 400px;
+/* Slider cards */
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
 }
 
-h2 {
-    background-color: #AFC3B5;
-    padding: 0.5rem;
-    border-radius: 8px;
+.slider-value {
+    text-align: center;
+    position: absolute;
+    top: 28.50px; /* Adjust this for vertical position */
+    /* transition: left 0.1s ease-in-out; */
 }
+
+.slider-container {
+    position: relative;
+}
+
+/* footer */
 
 footer {
     background-color: #90AE99;

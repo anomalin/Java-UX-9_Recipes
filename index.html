@@ -6,25 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="navbar">
-            <div><img src="img/arcticons--rakuten-recipe.svg" alt=""><h1>Receptsök</h1></div>
+            <div><img src="img/arcticons--rakuten-recipe.svg" alt="">
+                <h1>Receptsök</h1>
+            </div>
             <div>
                 <input type="text" placeholder="Sök recept">
-                
+
                 <svg xmlns="img/fluent--settings-32-light.svg" width="32" height="32">
 
-                <img src="img/lets-icons--user-fill.svg" alt="">
-                
-                
-  <path d="..." />
-</svg>
+                    <img src="img/lets-icons--user-fill.svg" alt="">
 
-                  
+
+                    <path d="..." />
+                </svg>
+
+
             </div>
         </div>
         <div class="chosen-filters">
@@ -37,13 +40,52 @@
             <div class="customer">
                 <h2>Kund</h2>
                 <div class="customer-filters">
+                    <div>
+
+                        <div class="food-card-outer">
+                            <div class="food-card">
+                                <div class="card-name">Huvudingrediens</div>
+                                <div class="category-list">
+                                    <div class="main-category" onclick="toggleSub('bird-meat')">Fågel</div>
+                                    <div class="main-category" onclick="toggleSub('fish-meat')">Fisk</div>
+                                    <div class="main-category" onclick="toggleSub('mammal-meat')"> Kött</div>
+                                </div>
+
+
+                                <div class="sub-category" id="bird-meat">
+                                    <div class="sub-item">Kyckling</div>
+                                    <div class="sub-item">Vaktel</div>
+                                    <div class="sub-item">Kalkon</div>
+                                </div>
+
+                                <div class="sub-category" id="fish-meat">
+                                    <div class="sub-item">Lax</div>
+                                    <div class="sub-item">Torsk</div>
+                                    <div class="sub-item">Tonfisk</div>
+                                    <div class="sub-item">Sej</div>
+                                    <div class="sub-item">Hälleflundra</div>
+                                </div>
+
+                                <div class="sub-category" id="mammal-meat">
+                                    <div class="sub-item">Fläsk</div>
+                                    <div class="sub-item">Biff</div>
+                                    <div class="sub-item">Lamm</div>
+                                    <div class="sub-item">Ren</div>
+                                    <div class="sub-item">Hjort</div>
+                                </div>
+                            </div>
+                            <div class="show-more-button">Visa fler</div>
+                        </div>
+
+                    </div>
+                    
 
                 </div>
             </div>
             <div class="chef">
                 <h2>Kock</h2>
                 <div class="chef-filters">
-                    
+
                 </div>
             </div>
         </div>

@@ -2,7 +2,9 @@ body {
     width: 600px;
     background-color: rgb(208, 215, 209);
     color: #26693C;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
 }
 
 svg {
@@ -40,6 +42,75 @@ svg {
     padding: 0.5rem;
 }
 
+/* card designs */
+.food-card-outer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #FFFFFF;
+
+
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+}
+
+.food-card {
+    /* display: grid;
+    grid-template-columns: auto; */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-name {
+    text-decoration: underline;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    /* gap: 20px; */
+}
+
+.category-list {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+}
+
+.main-category {
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+
+    padding: 4px;
+    border: 0.5px solid #26693C;
+    border-radius: 5px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.sub-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.sub-item {
+    border: 0.5px solid #26693C;
+    border-radius: 5px;
+}
+
+.show-more-button {
+    flex: 0 0 30%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+/* Main content */
 .main-content {
     width: 400px;
 }

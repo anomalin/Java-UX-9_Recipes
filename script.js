@@ -1,35 +1,37 @@
 import { faker } from 'https://jspm.dev/@faker-js/faker';
 
-const TopMenu =  {
+const TopMenu = {
     name: "TopMenu",
     data() {
-      return {
-        searchQuery: ""
-      };
+        return {
+            searchQuery: ""
+        };
     },
     methods: {
-      submitSearch() {
-        this.$emit("search", this.searchQuery); 
-      }
+        submitSearch() {
+            this.$emit("search", this.searchQuery);
+        }
     },
     template: `    
             <div class="topmenu">
                 <div>
-                    <img src="img/arcticons--rakuten-recipe.svg" alt=""><h1>Receptsök</h1>
+                    <img src="img/Group_18.png" alt=""><h1>Receptsök</h1>
                 </div>
                 <div class="search">
                     <input type="text" v-model="searchQuery" placeholder="Sök..." @keyup.enter="submitSearch" />
                     <button @click="submitSearch">🔍</button>
-                    <img src="img/fluent--settings-32-light.svg" alt=""> <img src="img/lets-icons--user-fill.svg" alt="">
+                    <img src="img/group.png" alt="settings icon">
+
+                <img src="img/ei_user.png" alt="user icon">
                 </div>
             </div>
     `
-  };
+};
 
 const FilterBar = {
     name: "FilterBar",
     props: ['filters'],
-    data () {
+    data() {
         return {
             collapsed: true
         }
@@ -41,10 +43,10 @@ const FilterBar = {
     },
     template: ` <div class="filterbar">
                 <span class="tag" v-for="(filter, index) in filters" :key="index">
-                 <button @click="$emit('remove-filter', filter)">{{ filter }}   x</button>
+                 <button @click="$emit('remove-filter', filter)">{{ filter }}   X</button>
                  </span>
                  </div>`
-  }
+}
 
 const FoodCard = {
     name: "FoodCard",
@@ -63,39 +65,63 @@ const FoodCard = {
         }
     },
     template: `<div class="food-card">
-                <div class="card-name">{{ title }}</div>
-                <div class="category-list">
-                <div v-for="(subItems, category) in categoryTree" :key="category">
-                <button @click="toggleCategory(category)" class="category-button">
-                {{ category }}
-                </button>
-                <div v-if="openCategory === category" class="subcategory-list">
-                <button v-for="item in subItems" :key="item" @click="addFilter(item)" class="subcategory-button">{{ item }}</button>
-                </div>
-                </div>
-                </div>
-                </div>`
+  <div class="card-name">{{ title }}</div>
+  <div class="button-container">
+  <div v-else class="category-list">
+    <!-- Alla kategoriknappar visas först -->
+    <div class="category-buttons">
+      <button
+        v-for="(subItems, category) in categoryTree"
+        :key="category"
+        @click="toggleCategory(category)"
+        class="category-button"
+      >
+        {{ category }}
+        <img src="img/ic--twotone-plus.svg" alt="add">
+      </button>
+    </div>
+    <div v-if="openCategory" class="subcategory-list">
+      <button
+        v-for="item in categoryTree[openCategory]"
+        :key="item"
+        @click="addFilter(item)"
+        class="subcategory-button">
+        {{ item }}
+      </button>
+    </div>
+    </div>
+  </div>
+</div>
+`
 }
 
 const SearchResults = {
-    name: "SearchResult", 
+    name: "SearchResult",
     props: {
         results: {
-            type: Array, 
+            type: Array,
             default: null
         }
     },
     template: `<div class="search-results" v-if="results !== null">
                     
                         <div v-for="(result, index) in results" :key="index" class="result-card">
-                        <img src="img/korvstroganoff_med_ris.jpg" alt="gryta med korv">
+                        <div class="top">
+                        <div class="to-left"><img src="img/korvstroganoff_med_ris.jpg" alt="gryta med korv">
                         <div><h3>{{ result.title }}</h3>
-                        <p> {{ result.description }} </p></div>
+                        <p> {{ result.description }} </p></div></div>
+                        <div class="to-right">
                         <div class="short-info">
                         <ul><li>10 portioner</li>
                         <li>Glutenfri</li>
                         <li>Medium</li>
                         <li>20 SEK/port</li></ul></div>
+                        <input type="checkbox" name="save">
+                        </div></div>
+                        <div class="bottom">
+                        <p>Tillagningstid: 30 min</p>
+                        <p>Komplexitet: Medium</p>
+                        </div>
                         </div>
                 </div>`
 }
@@ -106,6 +132,11 @@ const SearchFilter = {
         return {
             showSortOptions: false,
             selectedSort: "bestMatch",
+            sortLabels: {
+                bestMatch: "Bäst matchning",
+                alphabetical: "Från A-Ö",
+                mostPopular: "Populärast"
+            }
         };
     },
     methods: {
@@ -114,16 +145,71 @@ const SearchFilter = {
         }
     },
     template: `<div class="searchfilter">
-                <img src="img/gg--list.svg" alt="">
+                <div class="sorting">
+                <img src="img/material-symbols-light_table-rows@2x.png" alt="view">
                 <img src="img/change-sort-type.png" alt="change sorting" @click="toggleSortOptions" style="cursor: pointer;">
-                <p>Bäst matchning</p>
-                <p>Rensa sökning</p>
+                <p>{{ sortLabels[selectedSort] }}</p>
+                </div>
+                
+                <div class="clear-text">
+                <p @click="$emit('clear-search')" style="cursor: pointer;">Rensa sökning</p></div>
                 <div v-if="showSortOptions" class="sort-options">
                 <label><input type="radio" value="bestMatch" v-model="selectedSort">Bäst matchning</label>
                 <label><input type="radio" value="alphabetical" v-model="selectedSort">Från A-Ö</label>
                 <label><input type="radio" value="mostPopular" v-model="selectedSort">Populärast</label>
                 </div>
+                </div>
                 </div>`
+}
+
+const OptionSection = {
+    name:  "OptionSection",
+    data() {
+        return {
+            selectedOptions: {
+                adaptable: false,
+                filterRecipes: false
+            },
+            numberOfSteps: "",
+        };
+    },
+    methods: {
+        submitOptionSearch() {
+            this.$emit("option-section", {
+                adaptable: this.selectedOptions.adaptable,
+                filterRecipes: this.selectedOptions.filterRecipes,
+                steps: this.numberOfSteps
+            });
+            this.$emit("search", "");
+        },
+        clearOptionFilters() {
+            this.selectedOptions.adaptable = false;
+            this.selectedOptions.filterRecipes = false;
+            this.numberOfSteps = "";
+            this.$emit("clear-option-filters");
+        }
+    },
+    template: `<div class="option-section">
+                
+                <label>Anpassningsbar<input type="checkbox" v-model="selectedOptions.adaptable">
+                <div class="popup">Kryssa i för att visa recept som kan anpassas enligt vald specialkost. T.ex. byta ut en ingrediens.</div></label>
+                <label>Visa endast recept som innehåller alla valda filter<input type="checkbox" v-model="selectedOptions.filterRecipes"></label>
+                
+                
+                <div class="step"><label for="steps">Antal moment: </label>
+                <select id="steps" v-model="numberOfSteps">
+                <option value="">Välj</option>
+                <option value="few">1-5</option>
+                <option value="medium">5-10</option>
+                <option value="many">10+</option>
+                </select></div>
+                
+                <div class="option-buttons">
+                <button @click="clearOptionFilters">Rensa filter</button>
+                <button @click="submitOptionSearch">Sök</button>
+                </div>
+                </div>`
+
 }
 
 const app = Vue.createApp({
@@ -132,15 +218,16 @@ const app = Vue.createApp({
         'filter-bar': FilterBar,
         'food-card': FoodCard,
         'search-results': SearchResults,
-        'search-filter': SearchFilter
+        'search-filter': SearchFilter,
+        'option-section': OptionSection
     },
     data() {
         return {
             selectedFilters: [],
             mainIngredientTree: {
-                    "Fågel": ["Kyckling", "Kalkon", "Vaktel"],
-                    "Fisk": ["Lax", "Torsk", "Tonfisk", "Hälleflundra", "Sej"],
-                    "Kött": ["Fläsk", "Biff", "Lamm", "Ren", "Hjort"]
+                "Fågel": ["Kyckling", "Kalkon", "Vaktel"],
+                "Fisk": ["Lax", "Torsk", "Tonfisk", "Hälleflundra", "Sej"],
+                "Kött": ["Fläsk", "Biff", "Lamm", "Ren", "Hjort"]
             },
             vegetableTree: {
                 "Rotfrukter": ["Morot", "Rödbeta", "Sparris"]
@@ -152,13 +239,20 @@ const app = Vue.createApp({
                 "Allergi": ["Glutenfritt", "Mjölkproteinfritt", "Laktosfritt"],
                 "Preferenser": ["Vegetariskt", "Veganskt"]
             },
-        
+            chefTree: {
+                "Förberedelse": ["Går att förbereda dagen innan", "Går att frysa in"]
+            },
+            worldFoodTree: {
+                "Asiatiskt": ["Östasiatiskt", "Indiskt"],
+                "Europeiskt": ["Italienskt", "Franskt", "Spanskt", "Svenskt"]
+            },
+
             searchResults: []
         }
     },
     methods: {
-        handleSearch(query) {
-            this.searchResults = Array.from({length: 5}, () => ( {
+        handleSearch(query, options) {
+            this.searchResults = Array.from({ length: 5 }, () => ({
                 title: faker.commerce.productName(),
                 description: faker.lorem.sentence()
             }));
@@ -170,34 +264,16 @@ const app = Vue.createApp({
             if (!this.selectedFilters.includes(filter)) {
                 this.selectedFilters.push(filter);
             }
+        },
+        handleClearSearch() {
+            this.searchResults = [];
+            this.selectedFilters = [];
+        },
+        clearOptionfilters() {
+            this.clearOptionfilters();
         }
     }
 });
 
 app.mount("#app");
 
-
-
-// OBS! All JS här är chatGPT:at !
-
-// Select the slider, value display, and slider container
-const slider = document.querySelector('input[type="range"]');
-const valueDisplay = document.querySelector('.slider-value');
-
-// Function to update the value display and position
-function updateSliderValue() {
-    const sliderValue = slider.value;
-    valueDisplay.textContent = `${sliderValue} kr`;
-
-    // Calculate the new left position of the value display
-    const valuePosition = (sliderValue - slider.min) / (slider.max - slider.min) * 100;
-
-    // Position the value display relative to the slider's value
-    valueDisplay.style.left = `calc(${valuePosition}% - ${valueDisplay.offsetWidth / 2}px)`; // Center the value display
-}
-
-// Update the value display and position when the slider changes
-slider.addEventListener('input', updateSliderValue);
-
-// Call the function on page load to set the initial position
-document.addEventListener('DOMContentLoaded', updateSliderValue);

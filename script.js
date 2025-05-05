@@ -18,7 +18,7 @@ const TopMenu = {
                     <img src="img/Group_18.png" alt=""><h1>Receptsök</h1>
                 </div>
                 <div class="search">
-                    <input type="text" v-model="searchQuery" placeholder="Sök..." @keyup.enter="submitSearch" />
+                    <input type="text" v-model="searchQuery" placeholder="Sök recept" @keyup.enter="submitSearch" />
                     <button @click="submitSearch">🔍</button>
                     <img src="img/group.png" alt="settings icon">
 
